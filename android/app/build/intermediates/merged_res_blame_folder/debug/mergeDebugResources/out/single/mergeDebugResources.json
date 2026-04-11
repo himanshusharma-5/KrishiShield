@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.krishishield.emulator.app-debug-4:/xml_network_security_config.xml.flat",
+        "source": "com.krishishield.emulator.app-main-6:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "C:\\Users\\himan\\.gradle\\daemon\\9.0.0\\com.krishishield.emulator.app-debug-4:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\himan\\.gradle\\daemon\\9.0.0\\com.krishishield.emulator.app-main-6:\\layout\\activity_main.xml"
+    }
+]

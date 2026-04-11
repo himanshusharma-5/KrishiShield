@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.krishishield.emulator.app-mergeDebugResources-3:/layout/activity_main.xml",
+        "source": "com.krishishield.emulator.app-main-6:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\himan\\.gradle\\daemon\\9.0.0\\com.krishishield.emulator.app-mergeDebugResources-3:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\himan\\.gradle\\daemon\\9.0.0\\com.krishishield.emulator.app-main-6:\\layout\\activity_main.xml"
+    }
+]
