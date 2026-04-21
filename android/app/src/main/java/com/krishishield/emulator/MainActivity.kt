@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1001
-        private const val WEB_APP_URL = "http://192.168.29.34:5173"
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         assetLoader = WebViewAssetLoader.Builder()
             .addPathHandler(
-                "/assets/",
+                "/",
                 WebViewAssetLoader.AssetsPathHandler(this)
             )
             .build()
@@ -64,7 +63,17 @@ class MainActivity : AppCompatActivity() {
             mediaPlaybackRequiresUserGesture = false
             loadsImagesAutomatically = true
             mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
+            useWideViewPort = true
+            loadWithOverviewMode = false
+            builtInZoomControls = false
+            displayZoomControls = false
+            setSupportZoom(false)
+            textZoom = 100
+            layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
         }
+        binding.webView.setPadding(0, 0, 0, 0)
+        binding.webView.isVerticalScrollBarEnabled = false
+        binding.webView.isHorizontalScrollBarEnabled = false
 
         binding.webView.webViewClient = object : WebViewClient() {
             override fun shouldInterceptRequest(
@@ -93,7 +102,7 @@ class MainActivity : AppCompatActivity() {
                 if (request?.isForMainFrame == true) {
                     showError(
                         "Cannot open the app",
-                        "Start the Vite app on your computer, then tap Retry."
+                        "The packaged app files could not be loaded. Rebuild the web app bundle and try again."
                     )
                 }
             }
@@ -106,7 +115,7 @@ class MainActivity : AppCompatActivity() {
                 if (request?.isForMainFrame == true) {
                     showError(
                         "App page failed to load",
-                        "The emulator reached the server, but the page returned an error."
+                        "The packaged app returned an unexpected response."
                     )
                 }
             }
@@ -207,7 +216,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadApp() {
         showLoading()
-        binding.webView.loadUrl(WEB_APP_URL)
+        binding.webView.loadUrl(BuildConfig.WEB_APP_URL)
     }
 
     private fun showLoading() {
@@ -215,7 +224,7 @@ class MainActivity : AppCompatActivity() {
         binding.loadingSpinner.visibility = View.VISIBLE
         binding.retryButton.visibility = View.GONE
         binding.statusTitle.text = "Opening KrishiShield AI"
-        binding.statusMessage.text = "Connecting to the current app build at $WEB_APP_URL"
+        binding.statusMessage.text = "Loading the packaged app build"
     }
 
     private fun showError(title: String, message: String) {

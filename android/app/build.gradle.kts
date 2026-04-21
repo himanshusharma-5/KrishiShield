@@ -7,6 +7,12 @@ android {
     namespace = "com.krishishield.emulator"
     compileSdk = 35
 
+    sourceSets {
+        getByName("main") {
+            assets.setSrcDirs(listOf(file("../../dist")))
+        }
+    }
+
     defaultConfig {
         applicationId = "com.krishishield.emulator"
         minSdk = 26
@@ -19,7 +25,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "WEB_APP_URL", "\"http://192.168.29.34:5173\"")
+            buildConfigField("String", "WEB_APP_URL", "\"https://appassets.androidplatform.net/index.html\"")
         }
         release {
             isMinifyEnabled = false
@@ -27,7 +33,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "WEB_APP_URL", "\"http://192.168.29.34:5173\"")
+            buildConfigField("String", "WEB_APP_URL", "\"https://appassets.androidplatform.net/index.html\"")
         }
     }
 

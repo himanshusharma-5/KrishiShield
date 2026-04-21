@@ -424,10 +424,22 @@ export default function App() {
 
 function AppShell({ children }) {
   return (
-    <div className="min-h-screen select-none" style={{ background: THEME.bg, color: THEME.onSurface, fontFamily: "'DM Sans', sans-serif" }}>
+    <div className="min-h-screen w-full select-none" style={{ background: THEME.bg, color: THEME.onSurface, fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        html, body, #root {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          min-height: 100%;
+          background: ${THEME.bg};
+        }
+        body {
+          overflow-x: hidden;
+          font-size: 16px;
+        }
         * { -webkit-tap-highlight-color: transparent; }
+        *, *::before, *::after { box-sizing: border-box; }
         ::-webkit-scrollbar { display: none; }
         .no-scroll { overflow: hidden; }
         .glass { background: rgba(30,34,32,0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); }
@@ -1638,7 +1650,7 @@ function OnboardingScreen({ location, onComplete }) {
   const canProceed = step === 0 || step === 2 || (step === 1 && data.farmerName) || isLast;
 
   return (
-    <div className="min-h-screen px-4 py-8 flex flex-col max-w-md mx-auto">
+    <div className="min-h-[100dvh] w-full max-w-md mx-auto px-4 pt-6 pb-5 flex flex-col justify-between">
       {/* Progress */}
       <div className="flex gap-2 mb-8">
         {steps.map((_, i) => (
